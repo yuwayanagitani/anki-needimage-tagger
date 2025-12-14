@@ -1,10 +1,21 @@
 {
-  "name": "NeedImage Tagger",
-  "package": "need_image_tagger",
-  "author": "Yuwa",
-  "version": "1.0.0",
-  "min_point_version": 40,
-  "max_point_version": 99,
-  "homepage": "",
-  "mod": 0
+  "name": "anki-needimage-tagger",
+  "version": "0.1.0",
+  "description": "NeedImageTagger scans your notes and adds a tag (default: NeedImage) when a note likely needs an image. A note is tagged only if it contains enough configured keywords and does not already include an image (<img>).",
+  "auther": "Yuwa Yanagitani",
+  "author": "Yuwa Yanagitani",
+  "homepage": "https://github.com/yuwayanagitani/anki-needimage-tagger",
+  "license": "MIT",
+  "min_anki_version": "23.10.0",
+  "max_anki_version": null,
+  "requirements": [],
+  "entry_point": "__init__.py",
+  "config_file": "config.json",
+  "tags": [
+    "anki",
+    "addon",
+    "tagging",
+    "images"
+  ],
+  "notes": ""
 }
