@@ -1,0 +1,10 @@
+{
+  "name": "NeedImage Tagger",
+  "package": "need_image_tagger",
+  "author": "Yuwa",
+  "version": "1.0.0",
+  "min_point_version": 40,
+  "max_point_version": 99,
+  "homepage": "",
+  "mod": 0
+}

@@ -1,0 +1,17 @@
+{
+  "need_image_tag": "NeedImage",
+  "keywords": [
+    "ct",
+    "mri",
+    "x-ray",
+    "xray",
+    "ultrasound",
+    "echo",
+    "ecg",
+    "ekg"
+  ],
+  "min_keyword_hits": 1,
+  "case_sensitive": false,
+  "use_regex": true,
+  "remove_tag_if_resolved": true
+}
