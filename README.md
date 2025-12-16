@@ -1,122 +1,141 @@
-# 🖼️ NeedImageTagger — Keyword-based “Needs Image” tagging for Anki
+# Anki NeedImage Tagger
 
-> **Quick idea:** scan notes, and if a note **mentions imaging keywords** (CT/MRI/X-ray…) but **doesn’t contain an `<img>` yet**, it gets tagged (default: **NeedImage**).  
-> Perfect for building “add images later” queues without breaking your study flow.
-
----
-
-## ✨ What this add-on does
-
-- 🏷️ **Adds a tag** (default: `NeedImage`) to notes that likely need an image
-- 🔍 Uses **keyword hits** (you choose the keywords + how many matches are required)
-- 🧼 Optionally **removes the tag** when an image is found later (`<img>` detected)
-- ⚡ Runs in the background with a progress indicator (won’t freeze Anki)
+🔗 **AnkiWeb**  
+https://ankiweb.net/shared/info/287405236
 
 ---
 
-## 🚀 How to use
+## What this add-on does
 
-### 1) Run the scan
-1. Open Anki
-2. Go to **Tools → Add NeedImage Tag…**
-3. Enter a search query (or leave blank = scan all notes)
-4. Click OK ✅
+**Anki NeedImage Tagger** automatically tags cards that are likely to **benefit from an image**.  
+It helps you quickly identify text-only cards where adding a diagram, photo, or figure would improve understanding.
 
-You’ll see a summary like:
-- Notes scanned
-- Tags added
-- Tags removed (if enabled)
+This add-on is especially useful for:
 
-### 2) Use Browser search to review
-- `tag:NeedImage` → view everything waiting for images  
-- Combine with decks/tags:
-  - `deck:Radiology tag:NeedImage`
-  - `deck:"Year 4 Medicine" tag:NeedImage`
+- Medical and biological subjects
+- Anatomy, pathology, histology, radiology
+- Any topic where **visual information matters**
 
 ---
 
-## 🧠 Matching rules (simple + predictable)
+## Core Features
 
-A note is tagged **only if both** are true:
-
-1. ✅ It contains **at least N keyword hits** (configurable)  
-2. 🚫 It does **not** already contain an image (`<img` anywhere in the note)
-
-### Keyword matching options
-- 🔤 **Case sensitive**: on/off
-- 🧩 **Whole word match (recommended)**:
-  - `ct` matches “CT” / “ct” as a word, not as part of another word
-  - Internally uses word boundaries (`\b...\b`)
+- 🖼 Automatically assigns a **“need image” tag** to cards
+- 🔍 Detects cards with insufficient visual content
+- 🏷 Fully customizable tag name
+- 🔁 Dynamic tagging (tags can be added or removed)
+- 🪶 Lightweight and fast
+- 🧩 Works with any deck and note type
 
 ---
 
-## 🧰 Settings (GUI)
+## How It Works
+
+1. The add-on inspects configured fields of a card
+2. It checks whether images are present
+3. If no image is detected, a **NeedImage tag** is added
+4. If an image is later added, the tag can be removed automatically
+
+This keeps your collection visually optimized over time.
+
+---
+
+## Why Use NeedImage Tags?
+
+Using this add-on allows you to:
+
+- Create filtered decks such as:
+  - `tag:needimage`
+- Systematically improve card quality
+- Prioritize cards that need diagrams or figures
+- Avoid missing important visual learning opportunities
+
+It turns “I should add an image later” into a **trackable workflow**.
+
+---
+
+## Installation
+
+### From AnkiWeb (recommended)
+
+1. Open Anki  
+2. Tools → Add-ons → Get Add-ons  
+3. Enter the code from AnkiWeb  
+4. Restart Anki  
+
+👉 https://ankiweb.net/shared/info/287405236
+
+---
+
+### Manual (GitHub)
+
+1. Download or clone this repository
+2. Place it in:
+
+   `Anki2/<profile>/addons21/anki-needimage-tagger/`
+
+3. Restart Anki
+
+---
+
+## Configuration
 
 Open:
-- **Tools → Add-ons → NeedImageTagger → Config**
 
-### Tagging
-- 🏷️ **Need image tag**: change tag name (e.g. `NeedImage::Radiology`)
-- 🧹 **Remove tag if an image is found**: automatically clean up resolved notes
+**Tools → Add-ons → Anki NeedImage Tagger → Config**
 
-### Matching
-- 🎯 **Minimum keyword hits**: require 1 / 2 / 3… matches before tagging
-- 🔤 **Case sensitive**
-- 🧩 **Match whole words (recommended)**
+Available options include:
 
-### Keywords (one per line)
-Example list:
-- `ct`
-- `mri`
-- `x-ray`
-- `ultrasound`
-- `ecg`
-
-Tip: keep keywords short, focused, and consistent with your deck language.
+- Enable / disable tagging
+- Target fields to inspect
+- Tag name (default: `needimage`)
+- Whether to remove the tag when an image is added
+- Scope (review-time / batch processing)
 
 ---
 
-## 🎨 Suggested workflows
+## Usage
 
-### 🧪 “Image backlog” pipeline
-1. Scan notes → tag `NeedImage`
-2. In Browser, search `tag:NeedImage`
-3. Add images gradually (or with another tool)
-4. Re-scan → resolved notes auto-untagged ✅
+- Review cards normally, or
+- Run the add-on on selected cards in the Browser
 
-### 🩺 Medical student mode
-- Use keywords like: `ct`, `mri`, `us`, `doppler`, `angiography`, `ecg`
-- Add tags per course deck:
-  - `NeedImage::Cardio`
-  - `NeedImage::Neuro`
+Tagged cards can then be reviewed, edited, or grouped into filtered decks for image enrichment.
 
 ---
 
-## ⚠️ Notes / limitations
+## Performance & Safety
 
-- This add-on checks for `<img` in the note fields (HTML).  
-  If your note uses non-standard image embedding, adjust your templates/fields accordingly.
-- “Whole word match” uses simple boundaries; for languages without spaces, consider disabling it and using substring matching.
-- Very large collections: scanning *all notes* can take time — prefer using a Browser-style query to narrow scope.
-
----
-
-## 🧩 Troubleshooting
-
-### “Nothing happens” / no tags added
-- ✅ Make sure **keywords** are not empty
-- ✅ Try a smaller query first (e.g. `deck:YourDeck`)
-- ✅ Check a note contains keywords but no `<img>`
-
-### Settings don’t show
-- If your Anki build is old and doesn’t support custom config dialogs, you can still edit the add-on’s config directly via the standard JSON editor.
+- No background polling
+- No network or AI usage
+- Does **not** modify scheduling or intervals
+- Safe for large collections
 
 ---
 
-## 📌 Versioning tip (for your GitHub releases)
-If you publish on AnkiWeb, consider adding a short changelog section like:
-- ✅ Added whole-word matching toggle
-- ✅ Added auto-remove tag option
-- ✅ Improved config GUI
+## Compatibility
 
-Happy tagging! 🌈
+- Anki 24.x  
+- Anki 25.x  
+- Windows / macOS / Linux  
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Author
+
+Created by **@yuwayanagitani**
+
+---
+
+## Related Add-ons
+
+- **Anki Difficulty Tagger** – Automatically tag card difficulty
+- **Anki Bar Graph** – Visualize recent review activity
+- **HTML Exporter for Anki** – Export cards to HTML / PDF
+
+These add-ons together support a **systematic, high-quality Anki card workflow**.
